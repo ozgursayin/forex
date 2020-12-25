@@ -1,0 +1,48 @@
+.nav {
+  padding: 15px;
+  background-color: rgb(255, 145, 0);
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 600px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.time-stamp {
+  margin-left: 150px;
+  font-size: 10px;
+}
+
+.time-range-buttons {
+  margin-left: 50px;
+  color: blue;
+}
+.item {
+  margin: 10px;
+  font-size: 1.5rem;
+}
+.currency-table {
+  align-items: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+}
+.currency-add-button {
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.modal {
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+}
+
+.narrow {
+  width: 1px;
+}
