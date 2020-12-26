@@ -46,3 +46,11 @@
 .narrow {
   width: 1px;
 }
+.currency-list {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.base-currency {
+  margin-top: -1600px;
+  margin-left: 150%;
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Dimmer, Loader, Select } from "semantic-ui-react";
 import CurrencyTable from "./CurrencyTable";
-import Navbar from "./Navbar";
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [priceData, setPriceData] = useState();

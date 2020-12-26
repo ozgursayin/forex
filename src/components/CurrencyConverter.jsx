@@ -3,7 +3,7 @@ import "../App.css";
 import { Card, Dimmer, Loader, Select } from "semantic-ui-react";
 import Chart from "react-apexcharts";
 import TimeRangeSelector from "./TimeRangeSelector";
-import Navbar from "./Navbar";
+
 const CurrencyConverter = () => {
   const [loading, setLoading] = useState(true);
   const [priceData, setPriceData] = useState(null);

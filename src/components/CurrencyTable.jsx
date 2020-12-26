@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Modal, Form } from "semantic-ui-react";
+import { Button, Checkbox, Modal } from "semantic-ui-react";
 import "../App.css";
 
 const CurrencyTable = ({ baseCurrency, priceData }) => {
@@ -134,7 +134,7 @@ const CurrencyTable = ({ baseCurrency, priceData }) => {
             {priceData.rates[selectedCurrency["value"]] !== undefined
               ? (1 / priceData.rates[selectedCurrency["value"]]).toFixed(4) +
                 `  ${baseCurrency}`
-              : "1.000"}
+              : "1.000 EUR"}
           </td>
           <td className="narrow">
             {selectedCurrency["delete"] === "X" ? (
