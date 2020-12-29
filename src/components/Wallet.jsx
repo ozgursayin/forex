@@ -186,7 +186,10 @@ const Wallet = () => {
           ></Select>
           <h2>
             TOTAL AMOUNT:
-            <h2>{parseFloat(totalAmount.toFixed(2)).toLocaleString()}</h2>
+            <h2>
+              {parseFloat(totalAmount.toFixed(2)).toLocaleString()}{" "}
+              {fromCurrency}
+            </h2>
           </h2>
         </td>
       </div>
