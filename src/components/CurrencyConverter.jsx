@@ -3,6 +3,8 @@ import "../App.css";
 import { Card, Dimmer, Loader, Select } from "semantic-ui-react";
 import Chart from "react-apexcharts";
 import TimeRangeSelector from "./TimeRangeSelector";
+import optionsJSON from "../data/options.json";
+import selectedCurrenciesJSON from "../data/selectedCurrencies.json";
 
 const CurrencyConverter = () => {
   const [loading, setLoading] = useState(true);
@@ -12,41 +14,9 @@ const CurrencyConverter = () => {
   const [chartData, setChartData] = useState(null);
   const [series, setSeries] = useState(null);
   const [timeRange, setTimeRange] = useState(new Date() - 86400000 * 30);
-
-  const BASE_URL_BITCOIN = `https://api.coindesk.com/v1/bpi/currentprice.json`;
   const BASE_URL_CURRENCY = `https://api.exchangeratesapi.io/latest?`;
-  const HISTORICAL_BITCOIN_DATA = `https://api.coindesk.com/v1/bpi/historical/close.json`;
   const HISTORICAL_CURRENCY_DATA = `https://api.exchangeratesapi.io/history`;
-
-  const options = [
-    { value: "TRY", text: "TRY" },
-    { value: "USD", text: "USD" },
-    { value: "EUR", text: "EUR" },
-    { value: "GBP", text: "GBP" },
-    // { value: "BTC", text: "BTC" },
-
-    { value: "AUD", text: "AUD" },
-    { value: "SGD", text: "SGD" },
-    { value: "BGN", text: "BGN" },
-    { value: "BRL", text: "BRL" },
-    { value: "CAD", text: "CAD" },
-    { value: "CHF", text: "CHF" },
-    { value: "DKK", text: "DKK" },
-    { value: "HKD", text: "HKD" },
-    { value: "JPY", text: "JPY" },
-    { value: "SEK", text: "SEK" },
-    { value: "ISK", text: "ISK" },
-    { value: "PHP", text: "PHP" },
-    { value: "HUF", text: "HUF" },
-    { value: "CZK", text: "CZK" },
-    { value: "INR", text: "INR" },
-    { value: "CNY", text: "CNY" },
-    { value: "NZD", text: "NZD" },
-    { value: "MXN", text: "MXN" },
-    { value: "ILS", text: "ILS" },
-    { value: "IDR", text: "IDR" },
-    { value: "RUB", text: "RUB" },
-  ];
+  const options = [...selectedCurrenciesJSON, ...optionsJSON];
 
   const handleFromSelect = (e, data) => {
     setFromCurrency(data.value);
@@ -96,9 +66,7 @@ const CurrencyConverter = () => {
         `${HISTORICAL_CURRENCY_DATA}?start_at=${startDate}&end_at=${today}&base=${fromCurrency}&symbols=${toCurrency}`
       );
     }
-
     const data = await response.json();
-    console.log(data.rates);
     const orderedDates = {};
     Object.keys(data.rates)
       .sort(function (a, b) {
@@ -110,7 +78,6 @@ const CurrencyConverter = () => {
 
     const categories = Object.keys(orderedDates);
     const seriesLong = Object.values(orderedDates);
-    console.log(categories, seriesLong);
     const series = [];
     seriesLong.forEach((serie) => {
       series.push(
@@ -125,41 +92,6 @@ const CurrencyConverter = () => {
     setSeries([{ text: fromCurrency, data: series }]);
     setLoading(false);
   };
-
-  // const getChartData = async () => {
-  //   const response = await fetch(HISTORICAL_BITCOIN_DATA);
-  //   const data = await response.json();
-  //   const categories = Object.keys(data.bpi);
-  //   const seriesLong = Object.keys(data.bpi);
-  //   console.log(data);
-  //   const series = [];
-  //   seriesLong.forEach((serie) => {
-  //     series.push(parseFloat(serie.toFixed(2)));
-  //   });
-
-  //   console.log(series);
-  //   setChartData({
-  //     xaxis: {
-  //       categories: categories,
-  //     },
-  //   });
-  //   setSeries([{ text: "Bitcoin Price", data: series }]);
-  //   setLoading(false);
-  // };
-  const fetchCurrentBitcoinData = async () => {
-    const response = await fetch(BASE_URL_BITCOIN);
-    const data = await response.json();
-
-    setPriceData(data.bpi[fromCurrency].rate);
-    console.log(data.bpi !== null && data.bpi[fromCurrency].rate);
-    //getChartData();
-    //getHistoricalCurrencyData();
-    setLoading(false);
-  };
-
-  // useEffect(() => {
-  //   fetchCurrentBitcoinData();
-  // }, []);
 
   useEffect(() => {
     getHistoricalCurrencyData();
@@ -181,18 +113,15 @@ const CurrencyConverter = () => {
               placeholder="Select your currency"
               onChange={handleFromSelect}
               options={options}
-              //defaultkey="USD"
               value={fromCurrency}
             ></Select>
             <Select
               placeholder="Select your currency"
               onChange={handleToSelect}
               options={options}
-              //defaultkey="TRY"
               value={toCurrency}
             ></Select>
           </div>
-
           <div className="price">
             <Card>
               <Card.Content>

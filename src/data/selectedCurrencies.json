@@ -1,0 +1,6 @@
+[
+  { "value": "USD", "text": "US Dollar", "idd": 1, "flag": "us flag" },
+  { "value": "EUR", "text": "Euro", "idd": 2, "flag": "eu flag" },
+  { "value": "GBP", "text": "Pound Sterling", "idd": 3, "flag": "uk flag" },
+  { "value": "TRY", "text": "Turkish Lira", "idd": 4, "flag": "tr flag" }
+]

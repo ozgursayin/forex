@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, Dimmer, Loader, Select } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 const TimeRangeSelector = ({ handleTimeRange }) => {
   return (
     <div className="time-range-buttons">
-      {/* <Button onClick={() => handleTimeRange(365 * 5)}> 5 Years</Button> */}
       <Button className="blue" onClick={() => handleTimeRange(370)}>
         1 Year
       </Button>

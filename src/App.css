@@ -1,6 +1,6 @@
 .nav {
   padding: 15px;
-  background-color: rgb(255, 145, 0);
+  background-color: gold;
 }
 
 .price-container {
@@ -35,6 +35,11 @@
   margin-left: 40%;
   margin-right: 40%;
 }
+.wallet-currency-add-button {
+  margin-top: 2%;
+  margin-left: 22%;
+  margin-right: 40%;
+}
 
 .modal {
   bottom: auto !important;
@@ -48,9 +53,11 @@
 }
 .currency-list {
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: -50%;
 }
 .base-currency {
-  margin-top: -1600px;
-  margin-left: 150%;
+  margin-top: 10%;
+  position: fixed;
+  margin-left: 50%;
+  top: 0;
 }
