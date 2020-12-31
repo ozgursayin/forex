@@ -4,8 +4,9 @@ import { Dimmer, Loader, Select } from "semantic-ui-react";
 import CurrencyTable from "./CurrencyTable";
 import optionsJSON from "../data/options.json";
 import selectedCurrenciesJSON from "../data/selectedCurrencies.json";
+import WalletTable from "./WalletTable";
 
-const Home = () => {
+const Wallet = () => {
   const [loading, setLoading] = useState(true);
   const [priceData, setPriceData] = useState();
   const [fromCurrency, setFromCurrency] = useState("TRY");
@@ -60,10 +61,9 @@ const Home = () => {
           ></Select>
         </div>
       </div>
-
-      <CurrencyTable baseCurrency={fromCurrency} priceData={priceData} />
+      <WalletTable baseCurrency={fromCurrency} priceData={priceData} />
     </div>
   );
 };
 
-export default Home;
+export default Wallet;

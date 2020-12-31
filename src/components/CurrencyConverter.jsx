@@ -122,8 +122,8 @@ const CurrencyConverter = () => {
               value={toCurrency}
             ></Select>
           </div>
-          <div className="price">
-            <Card>
+          <div className="chart-price">
+            <Card className="chart-content">
               <Card.Content>
                 <Card.Header> </Card.Header>
                 <Card.Description>

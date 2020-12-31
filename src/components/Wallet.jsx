@@ -154,12 +154,17 @@ const Wallet = () => {
   };
 
   const walletContent = selectedCurrencies.map((selectedCurrency) => (
-    <div key={selectedCurrency.idd}>
+    <div key={selectedCurrency.idd} className="currency-box">
       <td>
-        <div className="ui segment">
+        <div className="ui segment ">
           <i className={selectedCurrency["flag"] + " flag"} />
-          <Input onChange={handleFromSelect} value={selectedCurrency.text} />
           <Input
+            className="currency-name"
+            onChange={handleFromSelect}
+            value={selectedCurrency.text}
+          />
+          <Input
+            className="currency-name"
             onChange={currencyConvert}
             placeholder="Enter an amount"
             currency={selectedCurrency.value}
@@ -173,8 +178,30 @@ const Wallet = () => {
       </td>
     </div>
   ));
-
   const baseCurrencyContent = (
+    <div className="price-container">
+      <div className="form">
+        <Select
+          placeholder="Select your currency"
+          onChange={handleFromSelect}
+          options={baseCurrencyOptions}
+          value={fromCurrency}
+        ></Select>
+        <h1>
+          TOTAL AMOUNT:
+          <h2>{fromCurrency}</h2>
+          <h2>{parseFloat(totalAmount.toFixed(2)).toLocaleString()}</h2>
+        </h1>
+      </div>
+      <div className="time-stamp">
+        {new Date().toJSON().slice(0, 10)}
+        {"  "}
+        {new Date().toJSON().slice(11, 19)} GMT
+      </div>
+    </div>
+  );
+
+  const baseCurrencyContent2 = (
     <div className="base-currency">
       <div className="form">
         <td>
@@ -184,13 +211,11 @@ const Wallet = () => {
             options={baseCurrencyOptions}
             value={fromCurrency}
           ></Select>
-          <h2>
+          <h1>
             TOTAL AMOUNT:
-            <h2>
-              {parseFloat(totalAmount.toFixed(2)).toLocaleString()}{" "}
-              {fromCurrency}
-            </h2>
-          </h2>
+            <h2>{fromCurrency}</h2>
+            <h2>{parseFloat(totalAmount.toFixed(2)).toLocaleString()}</h2>
+          </h1>
         </td>
       </div>
     </div>
@@ -207,13 +232,13 @@ const Wallet = () => {
         <div className="form">
           <tbody>
             <tr>
-              {walletContent}
               {baseCurrencyContent}
+              {walletContent}
             </tr>
           </tbody>
         </div>
         <div className="wallet-currency-add-button">
-          <Button className="blue" onClick={() => setModalOpen(true)}>
+          <Button className="blue " onClick={() => setModalOpen(true)}>
             +
           </Button>
         </div>

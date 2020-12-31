@@ -12,7 +12,7 @@ const RemoveButton = ({
         <Button
           icon="delete"
           size="tiny"
-          className="red"
+          className="red delete-button"
           onClick={() =>
             handleRemoveCurrency(
               selectedCurrency["value"],
@@ -23,7 +23,12 @@ const RemoveButton = ({
           }
         />
       ) : (
-        <Button icon="circle outline" size="tiny" className="red" disabled />
+        <Button
+          className="red delete-button"
+          icon="circle outline"
+          size="tiny"
+          disabled
+        />
       )}
     </>
   );
