@@ -6,6 +6,7 @@ import ModalContent from "../Common/ModalContent";
 import "../../App.css";
 import RemoveButton from "../Common/RemoveButton";
 import TimeStamp from "../Common/TimeStamp";
+import Content from "../Common/Content";
 
 const CurrencyTable = ({ baseCurrency, priceData }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -75,38 +76,17 @@ const CurrencyTable = ({ baseCurrency, priceData }) => {
     setOptions(updatedOptions);
   }, [selectedCurrencies]);
 
-  const homeContent = selectedCurrencies.map((selectedCurrency) => (
-    <div key={selectedCurrency.cid} className="currency-box">
-      <td>
-        <div className="ui segment ">
-          <i className={selectedCurrency["flag"] + " flag"} />
-          <Input className="currency-name" value={selectedCurrency.text} />
-          <Input
-            className="currency-name"
-            currency={selectedCurrency.value}
-            value={
-              priceData.rates[selectedCurrency["value"]] !== undefined
-                ? (1 / priceData.rates[selectedCurrency["value"]]).toFixed(4) +
-                  `  ${baseCurrency}`
-                : "1.000 EUR"
-            }
-          />
-          <span> </span>
-          <RemoveButton
-            selectedCurrency={selectedCurrency}
-            handleRemoveCurrency={handleRemoveCurrency}
-          />
-        </div>
-      </td>
-    </div>
-  ));
-
   return (
     <div className="currency-table">
       <div className="currency-list">
         <div className="form">
           <tbody>
-            <tr>{homeContent}</tr>
+            <Content
+              selectedCurrencies={selectedCurrencies}
+              priceData={priceData}
+              handleRemoveCurrency={handleRemoveCurrency}
+              baseCurrency={baseCurrency}
+            />
           </tbody>
         </div>
         <div className="currency-add-button">

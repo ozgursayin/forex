@@ -6,6 +6,8 @@ import ModalContent from "../Common/ModalContent";
 import "../../App.css";
 import RemoveButton from "../Common/RemoveButton";
 import TimeStamp from "../Common/TimeStamp";
+import Content from "../Common/Content";
+// import Content from '../Common/'
 
 const WalletTable = ({ baseCurrency, priceData }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -94,6 +96,7 @@ const WalletTable = ({ baseCurrency, priceData }) => {
       (option) => !selectedValues.includes(option.cid)
     );
     setOptions(updatedOptions);
+    localStorage.clear();
   }, [selectedCurrencies]);
 
   const currencyConvert = (e, data) => {
@@ -111,32 +114,6 @@ const WalletTable = ({ baseCurrency, priceData }) => {
     handleTotalAmount();
   };
 
-  const walletContent = selectedCurrencies.map((selectedCurrency) => (
-    <div key={selectedCurrency.cid} className="currency-box">
-      <td>
-        <div className="ui segment ">
-          <i className={selectedCurrency["flag"] + " flag"} />
-          <Input
-            className="currency-name"
-            onChange={handleFromSelect}
-            value={selectedCurrency.text}
-          />
-          <Input
-            className="currency-name"
-            onChange={currencyConvert}
-            placeholder="Enter an amount"
-            currency={selectedCurrency.value}
-          />
-          <span> </span>
-          <RemoveButton
-            selectedCurrency={selectedCurrency}
-            handleRemoveCurrency={handleRemoveCurrency}
-          />
-        </div>
-      </td>
-    </div>
-  ));
-
   return (
     <div className="currency-table">
       <div className="currency-list">
@@ -150,7 +127,12 @@ const WalletTable = ({ baseCurrency, priceData }) => {
         </h1>
         <div className="form">
           <tbody>
-            <tr>{walletContent}</tr>
+            <Content
+              selectedCurrencies={selectedCurrencies}
+              handleFromSelect={handleFromSelect}
+              currencyConvert={currencyConvert}
+              handleRemoveCurrency={handleRemoveCurrency}
+            />
           </tbody>
         </div>
         <div className="currency-add-button">
