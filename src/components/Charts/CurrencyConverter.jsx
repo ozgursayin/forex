@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../App.css";
+import "../../App.css";
 import { Card, Dimmer, Loader, Select } from "semantic-ui-react";
 import Chart from "react-apexcharts";
-import TimeRangeSelector from "./TimeRangeSelector";
-import optionsJSON from "../data/options.json";
-import selectedCurrenciesJSON from "../data/selectedCurrencies.json";
+import TimeRangeSelector from "../Common/TimeRangeSelector";
+import optionsJSON from "../../data/options.json";
+import selectedCurrenciesJSON from "../../data/selectedCurrencies.json";
+import TimeStamp from "../Common/TimeStamp";
 
 const CurrencyConverter = () => {
   const [loading, setLoading] = useState(true);
@@ -135,11 +136,7 @@ const CurrencyConverter = () => {
                   {"   "}
                 </Card.Description>
               </Card.Content>
-              <div className="time-stamp">
-                {new Date().toJSON().slice(0, 10)}
-                {"  "}
-                {new Date().toJSON().slice(11, 19)} GMT
-              </div>
+              <TimeStamp />
             </Card>
           </div>
         </div>

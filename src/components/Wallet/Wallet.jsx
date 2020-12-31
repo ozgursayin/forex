@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "../App.css";
-import { Dimmer, Loader, Select } from "semantic-ui-react";
-import CurrencyTable from "./CurrencyTable";
-import optionsJSON from "../data/options.json";
-import selectedCurrenciesJSON from "../data/selectedCurrencies.json";
+import "../../App.css";
+import { Dimmer, Loader } from "semantic-ui-react";
+import optionsJSON from "../../data/options.json";
+import selectedCurrenciesJSON from "../../data/selectedCurrencies.json";
+import WalletTable from "./WalletTable";
+import BaseCurrencySelector from "../Common/BaseCurrencySelector";
 
-const Home = () => {
+const Wallet = () => {
   const [loading, setLoading] = useState(true);
   const [priceData, setPriceData] = useState();
   const [fromCurrency, setFromCurrency] = useState("TRY");
@@ -50,20 +51,14 @@ const Home = () => {
 
   return (
     <div>
-      <div className="price-container">
-        <div className="form">
-          <Select
-            placeholder="Select your currency"
-            onChange={handleFromSelect}
-            options={options}
-            value={fromCurrency}
-          ></Select>
-        </div>
-      </div>
-
-      <CurrencyTable baseCurrency={fromCurrency} priceData={priceData} />
+      <BaseCurrencySelector
+        handleFromSelect={handleFromSelect}
+        options={options}
+        fromCurrency={fromCurrency}
+      />
+      <WalletTable baseCurrency={fromCurrency} priceData={priceData} />
     </div>
   );
 };
 
-export default Home;
+export default Wallet;

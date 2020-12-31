@@ -1,11 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 
-const RemoveButton = ({
-  selectedCurrency,
-  handleRemoveCurrency,
-  clearInput,
-}) => {
+const RemoveButton = ({ selectedCurrency, handleRemoveCurrency }) => {
   return (
     <>
       {selectedCurrency["delete"] === "X" ? (
@@ -17,7 +13,7 @@ const RemoveButton = ({
             handleRemoveCurrency(
               selectedCurrency["value"],
               selectedCurrency["text"],
-              selectedCurrency["idd"],
+              selectedCurrency["cid"],
               selectedCurrency["flag"]
             )
           }

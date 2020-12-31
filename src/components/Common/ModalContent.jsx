@@ -3,13 +3,13 @@ import { Checkbox } from "semantic-ui-react";
 
 const ModalContent = ({ options, handleToggle }) => {
   const modalContent = options.map((option) => (
-    <div key={option.idd}>
+    <div key={option.cid}>
       <Checkbox
         toggle
         onChange={handleToggle}
         value={option.value}
         text={option.text}
-        idd={option.idd}
+        cid={option.cid}
         flag={option.flag}
       />
       <span> </span>

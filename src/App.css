@@ -40,13 +40,8 @@
   width: 80%;
 }
 .currency-add-button {
-  margin-left: 40%;
-  margin-right: 40%;
-}
-.wallet-currency-add-button {
-  margin-top: 2%;
-  margin-left: 22%;
-  margin-right: 40%;
+  margin-left: 11%;
+  margin-top: 1%;
 }
 
 .modal {
@@ -143,7 +138,7 @@
     width: 350px !important;
     color: blue;
   } */
-  .home-currency-add-button {
+  .currency-add-button {
     margin: 10px 0 0 90px;
   }
   /* .home-overview {
