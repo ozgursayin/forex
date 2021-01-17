@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import CurrencyConverter from "./components/Charts/CurrencyConverter";
 import Navbar from "./components/Common/Navbar";
 import Home from "./components/Home/Home";
@@ -10,14 +10,14 @@ const App = () => {
   return (
     <div>
       <body>
-        <BrowserRouter>
+        <HashRouter>
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/charts" component={CurrencyConverter} />
             <Route path="/wallet" component={Wallet} />
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
       </body>
     </div>
   );
